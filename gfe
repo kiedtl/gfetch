@@ -1,0 +1,68 @@
+#!/bin/sh
+#
+# gfe - git fetch script
+# (c) Kied Llaentenn
+# see the LICENSE for more information.
+# NOTE: this script contains items stol^Htaken from
+# http://github.com/mitchweaver/bin.
+
+# TODO:
+#   - name@project name     e.g. "kiedtl@bin"
+#   - HEAD                  latest commit sha
+#   - created               date of first commit
+#   - language              main language of project
+#   - contributors          authors (in the format: <percent> <author> <commit count>
+#   - last change           how long ago was the last commit?
+#   - repo                  URL of master/origin
+#   - commit                commit count
+#   - lines of code         number of the lines of code
+#   - size kB (file count)  size of all files not ignored by git
+#   - license               e.g. MIT
+#   - language spread       like the language colors on GitHub
+
+
+get_user() {
+    git config --get user.name
+}
+
+get_project_name() {
+    basename $(pwd)
+}
+
+get_head() {
+    git log -1 --format="%h"
+}
+
+get_created() {
+    git log --reverse --format="%ar" | head -n1
+}
+
+get_commit_count() {
+    git rev-list --count --all
+}
+
+get_contributors() {
+    git log --format="%aN"| \
+        sort | \
+        uniq -c | \
+        sort -nr | \
+        sed 's|^[ ]*[^ ]*[ ]*||' | \
+        head -n1
+}
+
+showinfo() {
+    # usage: showinfo <function> <label>
+    # e.g.: showinfo "get_contributors" "contributors"
+    key="$2"
+    val="$(printf "$($1)" | tr -d '\n')"
+    printf "\033[1m%-8.8s\033[0m%16.32s\n" "$key" "$val"
+}
+
+printf '\n'
+showinfo get_project_name project
+showinfo get_user         user
+showinfo get_contributors contribs
+showinfo get_commit_count commits
+showinfo get_head         head
+showinfo get_created      created
+printf '\n'
