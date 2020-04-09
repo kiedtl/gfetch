@@ -8,14 +8,18 @@
 
 .POSIX:
 
-CMD    =
+CMD     =
 
-BIN    = gfe
-OBJDIR = bin
+PREFIX  = /usr/local
+DESTDIR =
 
-CHMOD  = $(shell which chmod)
-M4     = $(shell which m4)
-RM     = $(shell which rm)
+BIN     = gfe
+OBJDIR  = bin
+
+CHMOD   = $(shell which chmod)
+RM      = $(shell which rm)
+INSTALL = $(shell which install)
+M4      = $(shell which m4)
 
 all: bin/$(BIN)
 
@@ -33,4 +37,11 @@ $(OBJDIR)/$(BIN): $(OBJDIR) src/$(BIN).m4
 run:
 	@$(OBJDIR)/$(BIN)
 
-.PHONY: all clean run
+install: $(OBJDIR)/$(BIN)
+	$(CMD)$(INSTALL) -Dm755 $(OBJDIR)/$(BIN) \
+		$(DESTDIR)/$(PREFIX)/bin/$(BIN)
+
+uninstall:
+	$(CMD)$(RM) -f $(DESTDIR)/$(PREFIX)/bin/$(BIN)
+
+.PHONY: all clean run install uninstall
