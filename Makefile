@@ -6,6 +6,8 @@
 # See the COPYING file for more information
 #
 
+.POSIX:
+
 CMD    =
 
 BIN    = gfe
