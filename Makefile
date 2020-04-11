@@ -8,18 +8,22 @@
 
 .POSIX:
 
-CMD     =
+CMD       =
 
-PREFIX  = /usr/local
-DESTDIR =
+PREFIX    = /usr/local
+DESTDIR   =
 
-BIN     = gfe
-OBJDIR  = bin
+BIN       = gfe
+OBJDIR    = bin
 
-CHMOD   = $(shell which chmod)
-RM      = $(shell which rm)
-INSTALL = $(shell which install)
-M4      = $(shell which m4)
+CAT       = $(shell which cat)
+CHMOD     = $(shell which chmod)
+RM        = $(shell which rm)
+INSTALL   = $(shell which install)
+
+SRC       = src/gfe.sh lib/human.sh \
+	    src/commits.sh src/created.sh src/head.sh \
+	    src/project.sh src/srcsize.sh src/user.sh \
 
 all: bin/$(BIN)
 
@@ -29,9 +33,8 @@ clean:
 $(OBJDIR):
 	$(CMD)mkdir -p $(OBJDIR)
 
-$(OBJDIR)/$(BIN): $(OBJDIR) src/$(BIN).m4
-	cd src && \
-		$(CMD)$(M4) $(BIN).m4 > ../$(OBJDIR)/$(BIN)
+$(OBJDIR)/$(BIN): $(OBJDIR) src/$(BIN).sh
+	$(CMD)$(CAT) $(SRC) > $(OBJDIR)/$(BIN)
 	$(CMD)$(CHMOD) +x $(OBJDIR)/$(BIN)
 
 run:
@@ -44,4 +47,4 @@ install: $(OBJDIR)/$(BIN)
 uninstall:
 	$(CMD)$(RM) -f $(DESTDIR)/$(PREFIX)/bin/$(BIN)
 
-.PHONY: all clean run install uninstall
+.PHONY: all clean $(OBJDIR)/$(BIN) run install uninstall

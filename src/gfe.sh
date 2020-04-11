@@ -13,24 +13,23 @@
 #   - license               e.g. MIT
 #   - language spread       like the language colors on GitHub
 
-include(commits.sh)
-include(created.sh)
-include(head.sh)
-include(project.sh)
-include(user.sh)
-
 showinfo() {
     # usage: showinfo <function> <label>
     # e.g.: showinfo "get_contributors" "contributors"
     key="$2"
     val="$(printf "$($1)" | tr -d '\n')"
-    printf "\033[1m%-8.8s\033[0m%16.32s\n" "$key" "$val"
+    printf "\033[31m%-8.8s\033[0m%s\n" "$key" "$val"
 }
 
-printf '\n'
-showinfo get_project_name project
-showinfo get_user         user
-showinfo get_commit_count commits
-showinfo get_head         head
-showinfo get_created      created
-printf '\n'
+default_config() {
+    printf '\n'
+    showinfo get_project_name PROJECT
+    showinfo get_user         USER
+    showinfo get_commit_count COMMITS
+    showinfo get_head         HEAD
+    showinfo get_created      CREATED
+    showinfo get_srcsize      SIZE
+    printf '\n'
+}
+
+default_config
