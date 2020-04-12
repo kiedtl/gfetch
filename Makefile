@@ -21,9 +21,10 @@ CHMOD     = $(shell which chmod)
 RM        = $(shell which rm)
 INSTALL   = $(shell which install)
 
-SRC       = src/gfe.sh lib/human.sh \
+SRC       = lib/human.sh \
 	    src/commits.sh src/created.sh src/head.sh \
 	    src/project.sh src/srcsize.sh src/user.sh \
+	    src/defconfig.sh src/showinfo.sh src/main.sh
 
 all: bin/$(BIN)
 
@@ -33,7 +34,7 @@ clean:
 $(OBJDIR):
 	$(CMD)mkdir -p $(OBJDIR)
 
-$(OBJDIR)/$(BIN): $(OBJDIR) src/$(BIN).sh
+$(OBJDIR)/$(BIN): $(OBJDIR) $(SRC)
 	$(CMD)$(CAT) $(SRC) > $(OBJDIR)/$(BIN)
 	$(CMD)$(CHMOD) +x $(OBJDIR)/$(BIN)
 
