@@ -3,8 +3,8 @@
 # See the COPYING file for copyright information.
 
 human() {
-    printf "$1" | awk '
-    function human(x) {
+    cat | awk \
+    'function human(x) {
         if (x<1000) {return x} else {x/=1024}
         s="kMGTEPZY";
         while (x>=1000 && length(s)>1)
