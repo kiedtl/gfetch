@@ -18,7 +18,7 @@ showinfo() {
     }
 
     # move cursor right beyond ascii art
-    printf "\033[%sC" "$((ascii_width))"
+    printf "\033[%sC" "$((ascii_width+1))"
 
     # print key, separator, and info field
     printf "\033[3%sm%-${GFE_ALIGN:-13}s\033[0m%s\033[3%sm%s\033[0m\n" \
