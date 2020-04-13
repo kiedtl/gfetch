@@ -4,6 +4,7 @@
 
 defconfig() {
     printf '\n'
+    show_ascii
     showinfo get_project_name "PROJECT"
     showinfo get_user         "USER"
     showinfo get_head_long    "HEAD"
