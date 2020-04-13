@@ -9,12 +9,9 @@ get_srcsize() {
     # project files
     cd "$(findroot)"
 
-    for file in $(find *)
+    for file in $(git ls-files)
     do
-        if ! git check-ignore "$file" >/dev/null
-        then
-            size=$((size+=$(du -sb "$file" | awk '{ print $1 }')))
-        fi
+        size=$((size+=$(du -sb "$file" | awk '{ print $1 }')))
     done
 
     printf "$size" | human
