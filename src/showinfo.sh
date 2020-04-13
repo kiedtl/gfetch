@@ -21,7 +21,7 @@ showinfo() {
     printf "\033[%sC" "$((ascii_width))"
 
     # print key, separator, and info field
-    printf "\033[3%sm%-${GFE_ALIGN:-9}s\033[0m%s\033[3%sm%s\033[0m\n" \
+    printf "\033[3%sm%-${GFE_ALIGN:-13}s\033[0m%s\033[3%sm%s\033[0m\n" \
         "${GFE_COL1:-"1"}" "$key" \
         "$GFE_SEP" \
         "${GFE_COL2:-7}" "$val"
