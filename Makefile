@@ -35,7 +35,8 @@ $(OBJDIR):
 	$(CMD)mkdir -p $(OBJDIR)
 
 $(OBJDIR)/$(BIN): $(OBJDIR) $(SRC)
-	$(CMD)$(CAT) $(SRC) > $(OBJDIR)/$(BIN)
+	$(CMD)echo "#!/bin/sh\n# gfe: git fetch\n\n" | \
+		$(CAT) - $(SRC) > $(OBJDIR)/$(BIN)
 	$(CMD)$(CHMOD) +x $(OBJDIR)/$(BIN)
 
 run:
