@@ -13,7 +13,6 @@ get_srcsize() {
     do
         if ! git check-ignore "$file" >/dev/null
         then
-            echo "$file" >&2
             size=$((size+=$(du -sb "$file" | awk '{ print $1 }')))
         fi
     done
