@@ -5,19 +5,16 @@
 get_srcsize() {
     size=0
 
-    # get project root
-    root="$(git rev-parse --show-toplevel)"
+    # cd to the project root, to find all
+    # project files
+    cd "$(findroot)"
 
-    cd "$root"
     for file in $(find *)
     do
         if ! git check-ignore "$file" >/dev/null
         then
-            # don't count directories
-            if [ -f "$file" ]
-            then
-                size=$((size+=$(du -sb "$root/$file" | awk '{ print $1 }')))
-            fi
+            echo "$file" >&2
+            size=$((size+=$(du -sb "$file" | awk '{ print $1 }')))
         fi
     done
 
