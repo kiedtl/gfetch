@@ -3,10 +3,6 @@
 # See the COPYING file for copyright information.
 
 get_head() {
-    # cd to project root, so that we can access
-    # git's .git folder
-    cd "$(findroot)"
-
     # while it might be easier to simply
     # get list of commits with git-log, then
     # retrieve the first one, but I prefer to use
