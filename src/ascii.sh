@@ -43,8 +43,6 @@ EOF
     done <<-EOF
 $(printf %s "$default_ascii" | sed "s/$esc\[.m//g")
 EOF
-    echo $ascii_width >&2
-
 
     # draw ASCII art and move cursor up again.
     printf "$default_ascii\033[%sA\033[%sD" \
