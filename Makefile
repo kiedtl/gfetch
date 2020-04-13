@@ -21,7 +21,7 @@ CHMOD     = $(shell which chmod)
 RM        = $(shell which rm)
 INSTALL   = $(shell which install)
 
-SRC       = lib/human.sh \
+SRC       = lib/human.sh lib/findroot.sh \
 	    src/commits.sh src/created.sh src/head.sh \
 	    src/project.sh src/srcsize.sh src/user.sh \
 	    src/defconfig.sh src/showinfo.sh src/main.sh
