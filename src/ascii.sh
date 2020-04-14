@@ -33,6 +33,20 @@ ${c1}${revert}               ${reset}
 EOF
 )
 
+    # check if user-defined variable is a file
+    # if it is not, treat it like raw ascii art
+    if [ ! -z "$GFE_LOGO" ]
+    then
+        if [ -f "$GFE_LOGO" ]
+        then
+            ascii="$(cat "$GFE_LOGO")"
+        else
+            ascii="$GFE_LOGO"
+        fi
+    else
+        ascii="$default_ascii"
+    fi
+
     # set the width of the ASCII art for the
     # showinfo function.
     while read -r line
