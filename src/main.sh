@@ -15,7 +15,7 @@ main() {
     [ ! -f "$config" ] && printf "$defconfig" > "$config"
 
     # execute configuration
-    source "$config"
+    . "$config"
     gfe_info
 }
 
