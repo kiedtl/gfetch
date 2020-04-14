@@ -3,7 +3,7 @@
 # see the COPYING file for more information.
 
 showinfo() {
-    val="$($1)"
+    val="$1"
     [ -z "$val" ] && val="???"
 
     key=$2
