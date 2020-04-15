@@ -7,10 +7,15 @@ get_authors() {
     total="$(git rev-list --count --all)"
 
     # get list of all commits, listing authors only.
+    # group like authors together, then use uniq -c
+    # to get the number of commits per author.
+    # Once that is done, we can sort again by
+    # commit count and simply conver the commit count
+    # to a percentage.
     git --no-pager log --format="%aN" | \
-        sort | \                    # group like authors together.
-        uniq -c | \                 # print number of occurences of each author.
-        sort -bnr | \               # sort by commit count.
+        sort | \
+        uniq -c | \
+        sort -bnr | \
         while read -r commits author
         do
             percentage="$(((${commits}*100)/${total}))"
