@@ -3,12 +3,14 @@
 # See the COPYING file for copyright information.
 
 get_authors() {
+    # get total amount of commits
     total="$(git rev-list --count --all)"
 
+    # get list of all commits, listing authors only.
     git --no-pager log --format="%aN" | \
-        sort | \
-        uniq -c | \
-        sort -bnr | \
+        sort | \                    # group like authors together.
+        uniq -c | \                 # print number of occurences of each author.
+        sort -bnr | \               # sort by commit count.
         while read -r commits author
         do
             percentage="$(((${commits}*100)/${total}))"
