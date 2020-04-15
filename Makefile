@@ -24,7 +24,7 @@ INSTALL   = $(shell which install)
 SRC       = lib/human.sh \
 	    src/commits.sh src/created.sh src/head.sh \
 	    src/project.sh src/srcsize.sh src/user.sh \
-	    src/latest.sh \
+	    src/latest.sh src/authors.sh \
 	    src/defconfig.sh src/showinfo.sh src/ascii.sh \
 	    src/main.sh
 

@@ -37,6 +37,10 @@ GFE_SEP=\"\${GFE_SEP:-}\"
 # into.
 GFE_DIR=\"\${GFE_DIR:-}\"
 
+# GFE_AUTHOR_MAX: maximum number of authors for the
+# AUTHORS gfe field.
+GFE_AUTHORS_MAX=\"\${GFE_AUTHORS_MAX:-2}\"
+
 # main configuration. gfetch will simply execute
 # the gfe_info function on startup.
 #
@@ -59,6 +63,7 @@ gfe_info() {
     showinfo \"\$(get_user)\"         'USER'
     showinfo \"\$(get_head_long)\"    'HEAD'
     showinfo \"\$(get_created)\"      'CREATED'
+    showinfo \"\$(get_authors)\"      'AUTHORS'
     showinfo \"\$(get_latest)\"       'LAST CHANGE'
     showinfo \"\$(get_commit_count)\" 'COMMITS'
     showinfo \"\$(get_srcsize)\"      'SIZE'
