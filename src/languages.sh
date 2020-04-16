@@ -4,7 +4,8 @@
 
 get_languages() {
     # although tokei is faster, many distros don't
-    # have binaries compiled with the JSON feature,
+    # have binaries compiled with the JSON feature.
+    # (to be specific, my distro, Void.)
     # so we're using scc instead.
 
     # since we use scc to count lines of code, we
