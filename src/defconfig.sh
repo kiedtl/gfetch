@@ -45,6 +45,10 @@ GFE_DIR=\"\${GFE_DIR:-}\"
 # AUTHORS gfe field.
 GFE_AUTHORS_MAX=\"\${GFE_AUTHORS_MAX:-2}\"
 
+# GFE_LANG_MAX: maximum number of languages for the
+# LANGUAGES gfe field.
+GFE_LANG_MAX=\"\${GFE_LANG_MAX:-2}\"
+
 # main configuration. gfetch will simply execute
 # the gfe_info function on startup.
 #
@@ -72,6 +76,7 @@ gfe_info() {
     showinfo \"\$(get_head_long)\"    'HEAD'
     showinfo \"\$(get_version)\"      'VERSION'
     showinfo \"\$(get_created)\"      'CREATED'
+    showinfo \"\$(get_languages)\"    'LANGUAGES'
     showinfo \"\$(get_authors)\"      'AUTHORS'
     showinfo \"\$(get_latest)\"       'LAST CHANGE'
     showinfo \"\$(get_upstream)\"     'UPSTREAM'
