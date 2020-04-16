@@ -76,7 +76,7 @@ gfe_info() {
     showinfo \"\$(get_latest)\"       'LAST CHANGE'
     showinfo \"\$(get_upstream)\"     'UPSTREAM'
     showinfo \"\$(get_commit_count)\" 'COMMITS'
-    showinfo \"\$(get_srcsize)\"      'SIZE'
+    showinfo \"\$(get_srcsize)\"      'SOURCE SIZE'
     printf '\n'
 }
 "
