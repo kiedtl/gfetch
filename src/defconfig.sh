@@ -72,7 +72,6 @@ gfe_info() {
     show_ascii
     showheader \"\$(get_user)\" \"\$(get_gitver)\" \" ~ \"
     showinfo \"\$(get_project_name)\" 'PROJECT'
-    showinfo \"\$(get_user)\"         'USER'
     showinfo \"\$(get_head_long)\"    'HEAD'
     showinfo \"\$(get_version)\"      'VERSION'
     showinfo \"\$(get_created)\"      'CREATED'
