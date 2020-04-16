@@ -2,6 +2,10 @@
 # (c) Kiëd Llaentenn
 # see COPYING for more details
 
+# disable shellcheck warnings about
+# unused variables.
+#
+# shellcheck disable=2034
 defconfig="
 # gfetch configuration
 #
