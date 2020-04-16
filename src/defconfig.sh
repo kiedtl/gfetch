@@ -27,6 +27,10 @@ GFE_COL1=\"\${GFE_COL1:-1}\"
 # info column). possible values: 1-7
 GFE_COL2=\"\${GFE_COL2:-7}\"
 
+# GFE_COL3: color for the header/title.
+# possible values: 1-7
+GFE_COL3=\"\${GFE_COL3:-1}\"
+
 # GFE_SEP: character or text to separate each name
 # and info line.
 # e.g. using the value ':' would become 'name: info'
@@ -51,6 +55,9 @@ GFE_AUTHORS_MAX=\"\${GFE_AUTHORS_MAX:-2}\"
 # with the showinfo function.
 # e.g. showinfo \"\$(git --version)\" \"GIT\"
 #
+# to display a header/title, use the showheader function.
+# showheader usage: showheader <left> <right> <sep>
+#
 # to display ASCII art, use the show_ascii
 # function without any parameters.
 #
@@ -59,6 +66,7 @@ GFE_AUTHORS_MAX=\"\${GFE_AUTHORS_MAX:-2}\"
 gfe_info() {
     printf '\n'
     show_ascii
+    showheader \"\$(get_user)\" \"\$(get_gitver)\" \" ~ \"
     showinfo \"\$(get_project_name)\" 'PROJECT'
     showinfo \"\$(get_user)\"         'USER'
     showinfo \"\$(get_head_long)\"    'HEAD'
