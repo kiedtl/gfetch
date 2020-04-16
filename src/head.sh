@@ -3,17 +3,7 @@
 # See the COPYING file for copyright information.
 
 get_head() {
-    # while it might be easier to simply
-    # get list of commits with git-log, then
-    # retrieve the first one, but I prefer to use
-    # this way as it is slightly faster than
-    # git-log (according to hyperfine).
-    #
-    # we simply git .git/HEAD, which points us
-    # to the current branch head, then read the
-    # commit sha and truncate it to seven
-    # characters.
-    head -c7 ".git/$(awk '/ref:/ { print $2 }' .git/HEAD)"
+    git log -1 --format="%h"
 }
 
 # show branch in addition to HEAD
