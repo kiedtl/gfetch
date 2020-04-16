@@ -80,6 +80,7 @@ gfe_info() {
     showinfo \"\$(get_latest)\"       'LAST CHANGE'
     showinfo \"\$(get_upstream)\"     'UPSTREAM'
     showinfo \"\$(get_commit_count)\" 'COMMITS'
+    showinfo \"\$(get_loc)\"          'LOC'
     showinfo \"\$(get_srcsize)\"      'SOURCE SIZE'
     printf '\n'
 }
