@@ -13,5 +13,5 @@ get_head_long() {
     branch="$(git branch --show-current)"
     branch="${branch:-detached}"
 
-    printf "$(get_head) ($branch)"
+    printf '%s (%s)' "$(get_head)" "$branch"
 }
