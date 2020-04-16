@@ -6,6 +6,12 @@
 show_ascii() {
 
     # set color variables
+    #
+    # disable warning about unused variables
+    # and warning about using ${} when expanding
+    # arrays.
+    #
+    # shellcheck disable=1087,2034
     {
         esc="$(printf "\033")"
         c1="$esc[31m"
@@ -35,7 +41,7 @@ EOF
 
     # check if user-defined variable is a file
     # if it is not, treat it like raw ascii art
-    if [ ! -z "$GFE_LOGO" ]
+    if [ -n "$GFE_LOGO" ]
     then
         if [ -f "$GFE_LOGO" ]
         then
@@ -55,10 +61,10 @@ EOF
         [ "${#line}" -gt "${ascii_width:-0}" ] &&
             ascii_width="${#line}"
     done <<-EOF
-$(printf %s "$default_ascii" | sed "s/$esc\[.m//g")
+$(printf '%s' "$ascii" | sed "s/$esc\[.m//g")
 EOF
 
     # draw ASCII art and move cursor up again.
-    printf "$default_ascii\033[%sA\033[%sD" \
-        "$(printf "$default_ascii" | wc -l)" "$ascii_width"
+    printf "$ascii\033[%sA\033[%sD" \
+        "$(printf '%s' "$ascii" | wc -l)" "$ascii_width"
 }
