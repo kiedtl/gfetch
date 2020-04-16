@@ -18,7 +18,7 @@ get_authors() {
         sort -bnr | \
         while read -r commits author
         do
-            percentage="$(((${commits}*100)/${total}))"
+            percentage="$(((commits*100)/total))"
             echo "$percentage% $author $commits"
         done | \
         head -n "$GFE_AUTHORS_MAX"
