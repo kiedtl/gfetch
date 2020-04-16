@@ -26,6 +26,7 @@ SRC       = lib/human.sh \
 	    src/latest.sh src/authors.sh src/gitver.sh \
 	    src/project.sh src/srcsize.sh src/user.sh \
 	    src/upstream.sh src/version.sh src/languages.sh \
+	    src/loc.sh \
 	    src/defconfig.sh src/showinfo.sh src/ascii.sh \
 	    src/main.sh
 
