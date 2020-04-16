@@ -25,8 +25,8 @@ get_languages() {
     scc -fcsv | \
         awk -F, \
         '{
-            c[$1]+=($4+$5);
-            total+=($4+$5)
+            c[$1]+=$5;
+            total+=$5
         }
 
         END {

@@ -14,8 +14,6 @@ get_loc() {
         return
     fi
 
-    # note that comments are counted as well as
-    # actual lines of code.
     scc -fcsv | \
-        awk -F, '{ loc+=($4+$5) } END { print loc }'
+        awk -F, '{ loc+=$5 } END { print loc }'
 }
