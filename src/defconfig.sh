@@ -73,6 +73,7 @@ gfe_info() {
     showinfo \"\$(get_created)\"      'CREATED'
     showinfo \"\$(get_authors)\"      'AUTHORS'
     showinfo \"\$(get_latest)\"       'LAST CHANGE'
+    showinfo \"\$(get_upstream)\"     'UPSTREAM'
     showinfo \"\$(get_commit_count)\" 'COMMITS'
     showinfo \"\$(get_srcsize)\"      'SIZE'
     printf '\n'
