@@ -5,5 +5,5 @@
 # TODO: scrape actual project name
 # out of git origin or README
 get_project_name() {
-    basename $(pwd)
+    basename "$(pwd)"
 }

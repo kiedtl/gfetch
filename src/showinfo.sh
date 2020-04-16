@@ -8,16 +8,10 @@ showinfo() {
 
     key=$2
 
-    # remove trailing whitespace from string
-    # with `set --`.
-    # shellcheck disable=2046,2086
-    #{
-    #    set -f
-    #    set +f -- $val
-    #    val=$*
-    #}
-
     # move cursor right beyond ascii art
+    #
+    # disable warning about undefined ascii_width
+    # shellcheck disable=2154
     printf "\033[%sC" "$((ascii_width+1))"
 
     # print key and separator
@@ -44,6 +38,7 @@ showinfo() {
 showheader() {
     e="$(printf '\033')"
 
+    # shellcheck disable=1087
     showinfo " " \
         "$e[3${GFE_COL3}m$1$e[0m$3$e[3${GFE_COL3}m$2$e[0m"
 }

@@ -21,6 +21,7 @@ get_srcsize() {
     done
 
     # convert to human-readable format.
-    hsize=$(printf "$size" | human)
-    printf "$hsize ($files files)"
+    hsize=$(echo "$size" | human)
+
+    printf '%s (%s files)' "$hsize" "$files"
 }
