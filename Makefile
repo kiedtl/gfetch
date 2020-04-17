@@ -53,4 +53,7 @@ install: $(OBJDIR)/$(BIN)
 uninstall:
 	$(CMD)$(RM) -f $(DESTDIR)/$(PREFIX)/bin/$(BIN)
 
-.PHONY: all clean $(OBJDIR)/$(BIN) run install uninstall
+check: tests/main.sh
+	$(CMD)tests/main.sh
+
+.PHONY: all clean $(OBJDIR)/$(BIN) run install uninstall check
