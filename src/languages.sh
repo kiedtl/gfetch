@@ -23,8 +23,9 @@ get_languages() {
     # head -n$GFE_LANG_MAX: get only two first languages
     # tr '\n' ' ': finally, transform newlines to spaces
     scc -fcsv | \
-        awk -F, \
-        '{
+        awk -F, -v CONVFMT=%.2g \
+        '
+        {
             c[$1]+=$5;
             total+=$5
         }
