@@ -11,6 +11,7 @@ get_languages() {
     # awk -F, ...: remove LOC column
     # head -n$GFE_LANG_MAX: get only two first languages
     # tr '\n' ' ': finally, transform newlines to spaces
+    # shellcheck disable=2154
     echo "$scc_data" | \
         awk -F, -v CONVFMT=%.2g \
         '

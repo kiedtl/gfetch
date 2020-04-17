@@ -5,6 +5,7 @@
 get_loc() {
     get_sccdata
 
+    # shellcheck disable=2154
     echo "$scc_data" | \
         awk -F, '{ loc+=$5 } END { print loc }'
 }

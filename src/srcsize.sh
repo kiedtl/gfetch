@@ -7,6 +7,9 @@ get_srcsize() {
     files="$(git ls-files)"
     count="$(echo "$files" | wc -l)"
 
+    # disable warning about globbing, since it's
+    # intended.
+    # shellcheck disable=2086
     size="$(du -sb $files 2>/dev/null | \
         awk '{ sz+=$1 } END { print sz }')"
 
