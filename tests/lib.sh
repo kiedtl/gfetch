@@ -14,10 +14,10 @@ header() {
 test_command() {
     if $1 2>/dev/null >&2
     then
-        printf '%-50s %30s\n' "$2" "PASSED"
+        printf '✔ | %s\n' "$2"
         PASSED=$((PASSED+1))
     else
-        printf '%-50s %30s\n' "$2" "FAILED"
+        printf '✖ | %s\n' "$2"
         FAILED=$((FAILED+1))
     fi
 }
@@ -26,5 +26,4 @@ end() {
     printf '\n'
     printf '== completed %s tests. %s passed, %s failed.\n' \
         "$((PASSED+FAILED))" "$PASSED" "$FAILED"
-    printf '\n'
 }
