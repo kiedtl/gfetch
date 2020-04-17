@@ -20,6 +20,9 @@ huge, ridiculous ASCII art that takes up half the screen.
 completely configurable, down to the order of the information fields. Every
 single field -- even the (small) ASCII art -- can be disabled.
 
+Note that `gfetch` is still in very early stages. Expect bugs, incorrect
+information, and lots of missing features.
+
 ## where?
 
 You will need:
@@ -52,3 +55,128 @@ something like:
 
 **Configuration** is done by editing the shell script at
 `~/.config/gfe/config.sh`, which is created by default if it doesn't exist.
+It is then `source`d by `gfe` on startup.
+
+The configuration file consists of some environment variable definitions,
+which are only set if they are empty. This allows them to be overridden at
+runtime.
+
+The list of environment variables is as follows:
+
+```
+# ensure that you use the
+# form GFE_VALUE=\${GFE_VALUE:-othervalue}
+# to ensure that it can be overridden on
+# the command line!!
+#
+# GFE_LOGO: path to file with ASCII art.
+# if it\'s value is not a valid file, then
+# it is treated as ASCII art itself.
+GFE_LOGO=\"\${GFE_LOGO:-}\"
+
+# GFE_ALIGN: number of spaces for padding between
+# name and info columnds
+GFE_ALIGN=\"\${GFE_ALIGN:-13}\"
+
+# GFE_COL1: color for the first column (the
+# name column). possible values: 1-7
+GFE_COL1=\"\${GFE_COL1:-1}\"
+
+# GFE_COL2: color for the second column (the
+# info column). possible values: 1-7
+GFE_COL2=\"\${GFE_COL2:-7}\"
+
+# GFE_COL3: color for the header/title.
+# possible values: 1-7
+GFE_COL3=\"\${GFE_COL3:-1}\"
+
+# GFE_SEP: character or text to separate each name
+# and info line.
+# e.g. using the value ':' would become 'name: info'
+# in output.
+GFE_SEP=\"\${GFE_SEP:-}\"
+
+# GFE_DIR: directory/repository for gfetch to cd
+# into.
+GFE_DIR=\"\${GFE_DIR:-}\"
+
+# GFE_AUTHOR_MAX: maximum number of authors for the
+# AUTHORS gfe field.
+GFE_AUTHORS_MAX=\"\${GFE_AUTHORS_MAX:-2}\"
+
+# GFE_LANG_MAX: maximum number of languages for the
+# LANGUAGES gfe field.
+GFE_LANG_MAX=\"\${GFE_LANG_MAX:-2}\"
+```
+
+The config file also contains `gfe_info()` function, which is executed
+by `gfe` to show the information. It looks something like this:
+
+```
+gfe_info() {
+    # print a newline.
+    printf ''
+
+    # print the default ASCII art.
+    # note that the show_ascii() function must be
+    # the FIRST if it is used.
+    show_ascii
+
+    # print a Onefetch-esque header, with the
+    # Git username and Git version.
+    # usage: showheader <left> <right> <sep>
+    showheader "$(get_user)" "$(get_gitver)" " ~ "
+
+    # Each showinfo call prints one row of info.
+    # By default, all available info is printed.
+    # each command inside the "$()" is a gfetch
+    # function to get information.
+    #
+    # if you wish, you can even display your own text
+    # with the showinfo function.
+    # e.g. showinfo "$(hostname)" "HOSTNAME"
+
+    # usage: showinfo <info> <label>
+    showinfo "$(get_project_name)" 'PROJECT'
+
+    # note: get_head_long() shows the branch name
+    # as well as latest commit. if you want to see
+    # only the latest commit, you can use the
+    # get_head() function instead.
+    showinfo "$(get_head_long)"    'HEAD'
+
+    showinfo "$(get_version)"      'VERSION'
+    showinfo "$(get_created)"      'CREATED'
+    showinfo "$(get_languages)"    'LANGUAGES'
+    showinfo "$(get_authors)"      'AUTHORS'
+    showinfo "$(get_latest)"       'LAST CHANGE'
+    showinfo "$(get_upstream)"     'UPSTREAM'
+    showinfo "$(get_commit_count)" 'COMMITS'
+    showinfo "$(get_loc)"          'LOC'
+    showinfo "$(get_srcsize)"      'SOURCE SIZE'
+
+    # print a newline.
+    printf ''
+}
+```
+
+By default, all available information is printed.
+
+## why?
+
+See [ONEFETCH.md](ONEFETCH.md) for a Onefetch vs gfetch comparison.
+
+## faq
+
+- **Q**: Why is a lambda the default ASCII art?
+	- **A**: well, it's supposed to be a branch. (you know,
+	`git branch`?) If you think you can do better, feel free to submit an
+	issue with your ASCII art :)
+- **Q**: Are there any plans to add language-specific ASCII art (as in Onefetch)?
+	- **A**: Eventually. The goal is to first add other missing info fields
+	and further optimize the code.
+
+## license
+
+`gfetch` is licensed under the MIT license. See [COPYING](COPYING) for
+more information.
