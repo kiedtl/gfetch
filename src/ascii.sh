@@ -45,7 +45,18 @@ EOF
     then
         if [ -f "$GFE_LOGO" ]
         then
-            ascii="$(cat "$GFE_LOGO")"
+            case $(file "$GFE_LOGO") in
+                *PNG*|*JPEG*)
+                    if ! command -v chafa 2>/dev/null >&2
+                    then
+                        echo "error: chafa not found."
+                        return
+                    fi
+
+                    ascii="$(chafa -s 25 "$GFE_LOGO")"
+                    ;;
+                *) ascii="$(cat "$GFE_LOGO")" ;;
+            esac
         else
             ascii="$GFE_LOGO"
         fi
@@ -55,14 +66,15 @@ EOF
 
     # set the width of the ASCII art for the
     # showinfo function.
+    #if 
     while read -r line
     do
         # TODO: use ternary
         [ "${#line}" -gt "${ascii_width:-0}" ] &&
             ascii_width="${#line}"
     done <<-EOF
-$(printf '%s' "$ascii" | sed "s/$esc\[.m//g")
-EOF
+        $(printf '%s' "$ascii" | sed "s/$esc\[.*m//g")
+    EOF
 
     # draw ASCII art and move cursor up again.
     printf "$ascii\033[%sA\033[%sD" \
