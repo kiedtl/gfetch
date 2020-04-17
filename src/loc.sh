@@ -3,17 +3,8 @@
 # See the COPYING file for copyright information.
 
 get_loc() {
-    # see languages.sh for my reason for not using
-    # tokei.
+    get_sccdata
 
-    # since we use scc to count lines of code, we
-    # first check if it's in $PATH
-    if ! command -v scc 2>/dev/null >&2
-    then
-        printf '(note: scc not found)'
-        return
-    fi
-
-    scc -fcsv | \
+    echo "$scc_data" | \
         awk -F, '{ loc+=$5 } END { print loc }'
 }
