@@ -7,11 +7,13 @@
 `gfetch` is a tiny, lightweight shell script that can be used as an alternative
 to `onefetch`.
 
+<img alt="scrot" src="img/git-light.png" align="right" height="240px" width="480px">
+
 `gfetch` is
 
-- **small**. the entire script is less than 300 lines of code (not counting
+- **small**: the entire script is less than 300 lines of code (not counting
 comments).
-- **fast**. fine, not by a large margin, but still a few milliseconds faster :)
+- **fast**: shows information for the `git` repository in just a few seconds.
 - **POSIX**: runs on just about any modern POSIX shell: `bash`, `dash`, `mksh`,
 `loksh`, anything short of `tcsh` or `mksh`.
 - **less distracting**. `gfetch` does not have and never will have
@@ -42,16 +44,12 @@ $ make clean all
 # make install
 ```
 
-**NOTE:** Make will install to `/usr/local/bin` by default, so ensure that that
 directory is in your path first. If you want to install to a different
 location (e.g. `/usr/bin`) you can run `make PREFIX=/usr install` instead.
 
 ## how?
 
-Ensure that the `gfe` script is in your path, then execute it. You should get
-something like:
-
-![scrot](img/default-light.png)
+Ensure that the `gfe` script is in your path, then execute it.
 
 **Configuration** is done by editing the shell script at
 `~/.config/gfe/config.sh`, which is created by default if it doesn't exist.
