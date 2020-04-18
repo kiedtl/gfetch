@@ -22,13 +22,13 @@ tool really does is extract text from commands and various files. And the fact
 that they're all in a hundred different formats doesn't matter either, because
 you can easily utilize `awk` and `sed` to massage it into the format you want.
 
+<img src="img/onefetch-light.png" alt="onefetch" align="right"
+height="256px" width="520">
+
 Onefetch solves the problem of text extraction by using various libraries (e.g.
 the `git2` crate) instead of running commands. <sup id="a2">[2](#f2)</sup>
 Again, probably only me, but I don't like that either. I like to see what
 commands my fetch tool is running, if only for the education.
-
-<img src="img/onefetch-light.png" alt="onefetch" align="right"
-height="256px" width="520">
 
 On the other hand, `gfetch` was designed for fetching information. I don't want
 you to wait while the you fetches all the information before printing
