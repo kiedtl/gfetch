@@ -6,8 +6,7 @@ get_version() {
     # list tags, sorting by tag date
     # then remove empty lines and
     # show only last line
-    git for-each-ref \
-        --sort=taggerdate \
-        --format='%(tag)' | \
-        sed '/^$/d;N;D'
+    git tag --list \
+        --sort=taggerdate | \
+        tail -n1
 }
