@@ -11,6 +11,9 @@ can't be disabled, a strange license field, a *colorblocks* field (how on earth
 does the terminal's colorscheme relate to Git), written in Rust, slow for large
 projects.
 
+<img src="img/onefetch-gfe-light.png" alt="onefetch" align="right"
+height="256px">
+
 Again, it's probably only me, but I don't really like the fact that it's written
 in Rust. I've worked on a fetch tool in Rust myself <sup id="a1">[1](#f1)</sup>,
 and I've come to the conclusion that Rust is *probably* not the best tool for a
@@ -23,6 +26,9 @@ Onefetch solves the problem of text extraction by using various libraries (e.g.
 the `git2` crate) instead of running commands. <sup id="a2">[2](#f2)</sup>
 Again, probably only me, but I don't like that either. I like to see what
 commands my fetch tool is running, if only for the education.
+
+<img src="img/onefetch-light.png" alt="onefetch" align="right"
+height="256px">
 
 On the other hand, `gfetch` was designed for fetching information. I don't want
 you to wait while the you fetches all the information before printing
