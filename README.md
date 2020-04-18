@@ -1,11 +1,11 @@
-# gfetch
+<h1 align=center>gfetch</h1>
+<p align=center><code>gfetch</code> is a tiny, lightweight shell script that can be used as an alternative
+to <code>onefetch</code>.</p>
 
-> A command-line Git fetch script.
-
-## what?
-
-`gfetch` is a tiny, lightweight shell script that can be used as an alternative
-to `onefetch`.
+<p align="center">
+<a href="./COPYING"><img src="https://img.shields.io/badge/license-MIT-blue.svg"></a>
+<a href="https://github.com/lptstr/gfetch/releases"><img src="https://img.shields.io/github/release/lptstr/gfetch.svg"></a>
+</p>
 
 <img alt="scrot" src="img/git-light.png" align="right" height="240px" width="480px">
 
