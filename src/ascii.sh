@@ -13,6 +13,7 @@ show_ascii() {
     #
     # shellcheck disable=1087,2034
     {
+        esc="$(printf '\033')"
         c1="$esc[31m"
         c2="$esc[32m"
         c3="$esc[33m"
@@ -57,17 +58,7 @@ EOF
                     ;;
                 *)
                     ascii="$(cat "$GFE_LOGO")"
-
-                    # set the width of the ASCII art for the
-                    # showinfo function.
-                    while read -r line
-                    do
-                        [ "${#line}" -gt "${ascii_width:-0}" ] &&
-                        ascii_width="${#line}"
-                    done <<-EOF
-$(printf '%s' "$ascii" | sed "s/\x1b\[[0-9;]*m//g")
-EOF
-                ;;
+                    ;;
             esac
         else
             ascii="$GFE_LOGO"
@@ -75,6 +66,20 @@ EOF
     else
         ascii="$default_ascii"
     fi
+
+# set the width of the ASCII art for the
+# showinfo function if it wasn't already set
+# before
+if [ -z "$ascii_width" ]
+then
+    while read -r line
+    do
+        [ "${#line}" -gt "${ascii_width:-0}" ] &&
+            ascii_width="${#line}"
+    done <<-EOF
+$(printf '%s' "$ascii" | sed "s/\x1b\[.m//g")
+EOF
+fi
 
     # draw ASCII art and move cursor up again.
     printf "$ascii\033[%sA\033[%sD" \
