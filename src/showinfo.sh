@@ -12,7 +12,7 @@ showinfo() {
     #
     # disable warning about undefined ascii_width
     # shellcheck disable=2154
-    printf "\033[%sC" "$((ascii_width+1))"
+    printf "\033[%sC" "$ascii_width"
 
     # print key and separator
     printf "\033[1;3%sm%-${GFE_ALIGN}s\033[0m%s" \
@@ -27,12 +27,12 @@ showinfo() {
         # just in case this info field has multiple lines.
         # this is so that multi-lined info fields are
         # aligned properly.
-        printf '\n\033[%sC' "$((ascii_width+GFE_ALIGN+1))"
+        printf '\n\033[%sC' "$((ascii_width+GFE_ALIGN))"
     done
 
     # WORKAROUND: move cursor back, so that next
     # info field isn't misaligned.
-    printf '\033[%sD' "$((ascii_width+GFE_ALIGN+1))"
+    printf '\033[%sD' "$((ascii_width+GFE_ALIGN))"
 }
 
 showheader() {

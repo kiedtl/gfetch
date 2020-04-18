@@ -84,4 +84,7 @@ fi
     # draw ASCII art and move cursor up again.
     printf "$ascii\033[%sA\033[%sD" \
         "$(printf '%s' "$ascii" | wc -l)" "$ascii_width"
+
+    # add some padding to ascii_width
+    ascii_width=$((ascii_width+3))
 }
