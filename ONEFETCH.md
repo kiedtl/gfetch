@@ -32,12 +32,11 @@ height="264px" width="512">
 
 On the other hand, `gfetch` was designed for fetching information. I don't want
 you to wait while the you fetches all the information before printing
-it, I want it now! Start showing me the info now! And when you do, I don't want
-a huge 40-column ASCII art with the logo of the language I'm using. I already
-know what language it's written in, and even if I didn't, the `Language` field
-is quite enough. And BTW, let me display my *own* info fields when I want to.
-The default ASCII can be ugly, I don't care, because I want to see the info,
-not the art.
+it, I want it now! And when you do, I don't want a huge 40-column ASCII art with
+the logo of the language I'm using. I already know what language it's written
+in, and even if I didn't, the `Language` field is quite enough. And BTW, let me
+display my *own* info fields when I want to. The default ASCII can be ugly, I
+don't care, because I want to see the info, not the art.
 
 
 #### *This document is a work in progress.*
