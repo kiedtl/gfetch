@@ -8,8 +8,9 @@
 <a href="https://github.com/lptstr/gfetch/releases"><img src="https://img.shields.io/github/release/lptstr/gfetch.svg"></a>
 <br>
 <img alt="build with Neovim" src="https://img.shields.io/badge/built%20with-Neovim-green">
-<br>
 </p>
+
+<br>
 
 <img alt="scrot" src="img/git-light.png" align="right" height="240px" width="480px">
 
