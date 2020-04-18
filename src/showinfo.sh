@@ -3,8 +3,11 @@
 # see the COPYING file for more information.
 
 showinfo() {
+    # return if no information found
+    # TODO: print error message instead of silently
+    # failing
     val="$1"
-    [ -z "$val" ] && val="???"
+    [ -z "$val" ] && return
 
     key=$2
 
