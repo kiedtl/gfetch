@@ -15,7 +15,7 @@ showinfo() {
     printf "\033[%sC" "$((ascii_width+1))"
 
     # print key and separator
-    printf "\033[3%sm%-${GFE_ALIGN}s\033[0m%s" \
+    printf "\033[1;3%sm%-${GFE_ALIGN}s\033[0m%s" \
         "$GFE_COL1" "$key" "$GFE_SEP"
 
     # print information, one line at a time
@@ -40,5 +40,5 @@ showheader() {
 
     # shellcheck disable=1087
     showinfo " " \
-        "$e[3${GFE_COL3}m$1$e[0m$3$e[3${GFE_COL3}m$2$e[0m"
+        "$e[1;3${GFE_COL3}m$1$e[0m$3$e[1;3${GFE_COL3}m$2$e[0m"
 }
