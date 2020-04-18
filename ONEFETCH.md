@@ -12,7 +12,7 @@ does the terminal's colorscheme relate to Git), written in Rust, slow for large
 projects.
 
 <img src="img/onefetch-gfe-light.png" alt="onefetch" align="right"
-height="256px" width="520">
+height="220px" width="520">
 
 Again, it's probably only me, but I don't really like the fact that it's written
 in Rust. I've worked on a fetch tool in Rust myself <sup id="a1">[1](#f1)</sup>,
@@ -23,7 +23,7 @@ that they're all in a hundred different formats doesn't matter either, because
 you can easily utilize `awk` and `sed` to massage it into the format you want.
 
 <img src="img/onefetch-light.png" alt="onefetch" align="right"
-height="256px" width="520">
+height="220px" width="520">
 
 Onefetch solves the problem of text extraction by using various libraries (e.g.
 the `git2` crate) instead of running commands. <sup id="a2">[2](#f2)</sup>
