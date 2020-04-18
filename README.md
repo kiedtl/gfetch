@@ -2,8 +2,13 @@
 <p align=center><b><a href="#what">what?</a> | <a href="#where">where?</a> | <a href="#how">how?</a> | <a href="#why">why?</a> | <a href="#faq">faq</a> | <a href="#license">license</a></b></p>
 <hr>
 <p align="center">
+<img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/lptstr/gfetch">
+<img alt="Lines of code" src="https://img.shields.io/badge/lines%20of%20code-%3E500-blue">
 <a href="./COPYING"><img src="https://img.shields.io/badge/license-MIT-blue.svg"></a>
 <a href="https://github.com/lptstr/gfetch/releases"><img src="https://img.shields.io/github/release/lptstr/gfetch.svg"></a>
+<br>
+<img alt="build with Neovim" src="https://img.shields.io/badge/built%20with-Neovim-green">
+<br>
 </p>
 
 <img alt="scrot" src="img/git-light.png" align="right" height="240px" width="480px">
