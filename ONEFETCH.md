@@ -3,15 +3,6 @@
 > NOTE: if you think any comparison here is unfair in the least to Onefetch,
 > submit an issue and I will remove it.
 
-**quick comparison:**
-
-|          | `gfetch` | Onefetch |
-|:--------:|:--------:|:--------:|
-| language | POSIX sh | Rust     |
-| LOC      | ~500     | ~3.7k    |
-
----
-
 ## design
 
 It's probably only me, but when I first started using Onefetch, I began to feel
