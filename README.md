@@ -59,8 +59,10 @@ $ make clean all
 # make install
 ```
 
-directory is in your path first. If you want to install to a different
-location (e.g. `/usr/bin`) you can run `make PREFIX=/usr install` instead.
+NOTE: ensure that the `/usr/local/bin` path is directory is in your path first,
+since that's where it's installed by default. If you want to install to a
+different location (e.g. `/usr/bin`) you can run `make PREFIX=/usr install`
+instead.
 
 ## how?
 
