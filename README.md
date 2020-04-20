@@ -14,12 +14,17 @@
 
 <img alt="scrot" src="img/git-light.png" align="right" height="240px" width="480px">
 
-`gfetch` is a tiny, lightweight shell script that can be used as an alternative
-to `onefetch`.
+`gfetch` is a tiny, lightweight Git fetch script that can be used as an alternative
+to [`onefetch`](https://github.com/o2sh/onefetch).
 
 ## what?
 
-`gfetch` is
+`gfetch` runs a various commands (e.g. `git rev-list --count --all`) to
+retrieve some statistics (e.g. current branch) for the current project.
+It's just a little convenience utility to prevent having to run ten
+different commands and parsing with grep or sed.
+
+Compared to Onefetch, `gfetch` is
 
 - **small**: the entire script is less than 300 lines of code (not counting
 comments).
