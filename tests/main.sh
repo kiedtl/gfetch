@@ -12,6 +12,7 @@ test_command "command -v shellcheck 2>/dev/null >&2" \
 
 header "linting source files"
 ls -1 src/ |
+sed "$(printf 's/[\047\042\\ \t]/\\\\&/g')"
 xargs -I file \
     test_command "shellcheck -e2148 file" \
     "Passed shellcheck: 'file'"
