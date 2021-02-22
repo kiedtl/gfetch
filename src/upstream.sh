@@ -6,7 +6,9 @@ get_upstream() {
     # get current remote for current branch
     remote=$(git branch -lvv | \
         awk '/*/ { print $4 }' | \
-        sed 's/[]\[]//g;y|/| |;s/ .*$//g')
+        tr -d '\\][' | \
+        tr / ' ' | \
+        cut -d ' ' -f 2-)
 
     # get url for remote
     git remote get-url "$remote" --push
