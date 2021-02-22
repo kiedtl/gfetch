@@ -11,7 +11,7 @@ get_head_long() {
     # retrieve branch, printing "detached"
     # if in detached HEAD state
     branch="$(git branch --show-current)"
-    branch="${branch:-detached}"
+    : "${branch:=detached}"
 
     printf '%s (%s)' "$(get_head)" "$branch"
 }
