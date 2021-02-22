@@ -64,19 +64,16 @@ EOF
         fi
     ;;esac
 
-# set the width of the ASCII art for the
-# showinfo function if it wasn't already set
-# before
-case "$ascii_width" in '')
-    while IFS= read -r line
-    do
-        case "$(( "${#line}" > "${ascii_width:-0}" ))" in 1)
-            ascii_width="${#line}"
-        ;;esac
-    done <<-EOF
-$(printf '%s' "$ascii" | sed "s/$(printf '\033')\[.m//g")
-EOF
-;;esac
+    # set the width of the ASCII art for the
+    # showinfo function if it wasn't already set
+    # before
+    : ${ascii_width:="$(
+        printf %s "$ascii" |
+        sed s/"$(printf \\033)"'\[.m//g' |
+        awk '($0=length())&&1' |
+        sort -rn |
+        head -n 1
+    )"}
 
     # draw ASCII art and move cursor up again.
     printf "$ascii\033[%sA\033[%sD" \
