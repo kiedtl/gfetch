@@ -3,6 +3,6 @@
 # See the COPYING file for copyright information.
 
 get_gitver() {
-    ver=$(git --version | awk '{ print $3 }')
+    ver=$(git --version | tr -s ' ' \\t | cut -f 3)
     printf "git v%s" "$ver"
 }

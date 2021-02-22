@@ -16,10 +16,11 @@ get_authors() {
         sort | \
         uniq -c | \
         sort -bnr | \
-        while read -r commits author
-        do
-            percentage="$(((commits*100)/total))"
-            echo "$percentage% $author $commits"
-        done | \
+        awk '{print $1*100/'"$total"' "% " $2 " " $1;}' | \
+        # while read -r commits author
+        # do
+        #     percentage="$(((commits*100)/total))"
+        #     echo "$percentage% $author $commits"
+        # done | \
         head -n "$GFE_AUTHORS_MAX"
 }

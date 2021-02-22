@@ -5,5 +5,6 @@
 get_created() {
     git log \
         --reverse \
-        --format="%ar" | sed 1q
+        --format="%ar" | \
+    head -n 1
 }

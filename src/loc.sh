@@ -15,6 +15,12 @@ get_loc() {
     # shellcheck disable=2154
     loc="$(echo "$scc_data" | \
         awk -F, '{ loc+=$5 } END { print loc }' | \
-        sed ':a;s/\B[0-9]\{3\}\>/,&/;ta')"
+        sed '
+          /[0-9]\{0,3\}$/b
+          s/[0-9]\{3\}$/,&/
+          :a
+          s/[0-9]\{3\},/,&/
+          ta
+        ')"
     printf '%s lines' "$loc"
 }

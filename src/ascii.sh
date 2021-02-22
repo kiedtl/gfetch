@@ -41,8 +41,9 @@ EOF
 
     # check if user-defined variable is a file
     # if it is not, treat it like raw ascii art
-    if [ -n "$GFE_LOGO" ]
-    then
+    ascii="$default_ascii"
+    case "$GFE_LOGO" in ?*)
+        ascii="$GFE_LOGO"
         if [ -f "$GFE_LOGO" ]
         then
             case $(file "$GFE_LOGO") in
@@ -60,31 +61,24 @@ EOF
                     ascii="$(cat "$GFE_LOGO")"
                     ;;
             esac
-        else
-            ascii="$GFE_LOGO"
         fi
-    else
-        ascii="$default_ascii"
-    fi
+    ;;esac
 
-# set the width of the ASCII art for the
-# showinfo function if it wasn't already set
-# before
-if [ -z "$ascii_width" ]
-then
-    while read -r line
-    do
-        [ "${#line}" -gt "${ascii_width:-0}" ] &&
-            ascii_width="${#line}"
-    done <<-EOF
-$(printf '%s' "$ascii" | sed "s/\x1b\[.m//g")
-EOF
-fi
+    # set the width of the ASCII art for the
+    # showinfo function if it wasn't already set
+    # before
+    : ${ascii_width:="$(
+        printf %s "$ascii" |
+        sed s/"$(printf \\033)"'\[.m//g' |
+        awk '($0=length())&&1' |
+        sort -rn |
+        head -n 1
+    )"}
 
     # draw ASCII art and move cursor up again.
     printf "$ascii\033[%sA\033[%sD" \
         "$(printf '%s' "$ascii" | wc -l)" "$ascii_width"
 
     # add some padding to ascii_width
-    ascii_width=$((ascii_width+3))
+    : $((ascii_width=+3))
 }
