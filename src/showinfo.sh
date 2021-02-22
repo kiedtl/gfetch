@@ -7,7 +7,7 @@ showinfo() {
     # TODO: print error message instead of silently
     # failing
     val="$1"
-    [ -z "$val" ] && return
+    case "$val" in '') return ;;esac
 
     key=$2
 
@@ -22,15 +22,17 @@ showinfo() {
         "$GFE_COL1" "$key" "$GFE_SEP"
 
     # print information, one line at a time
-    echo "$val" | while read -r line
-    do
-        printf '\033[3%sm%s\033[0m' "$GFE_COL2" "$line"
-
+    echo "$val" |
+    xargs -I line \
+        printf \
+          '\033[3%sm%s\033[0m\n\033[%sC' \
+          "$GFE_COL2" \
+          "line" \
+          "$((ascii_width+GFE_ALIGN))"
         # WORKAROUND: move cursor forward again
         # just in case this info field has multiple lines.
         # this is so that multi-lined info fields are
         # aligned properly.
-        printf '\n\033[%sC' "$((ascii_width+GFE_ALIGN))"
     done
 
     # WORKAROUND: move cursor back, so that next
