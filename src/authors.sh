@@ -16,7 +16,7 @@ get_authors() {
         sort | \
         uniq -c | \
         sort -bnr | \
-        awk '{print $1*100/'"$total"' "% " $2 $1;}' | \
+        awk '{print $1*100/'"$total"' "% " $2 " " $1;}' | \
         # while read -r commits author
         # do
         #     percentage="$(((commits*100)/total))"
