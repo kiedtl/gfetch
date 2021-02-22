@@ -5,7 +5,7 @@
 get_sccdata() {
     # get outta here if this function
     # was already called
-    [ -z "$scc_data" ] || return
+    case "$scc_data" in ?*) return ;;esac
 
     # although tokei is faster, many distros don't
     # have binaries compiled with the JSON feature.
