@@ -68,7 +68,7 @@ EOF
 # showinfo function if it wasn't already set
 # before
 case "$ascii_width" in '')
-    while read -r line
+    while IFS= read -r line
     do
         case "$(( "${#line}" > "${ascii_width:-0}" ))" in 1)
             ascii_width="${#line}"
